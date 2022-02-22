@@ -23,10 +23,10 @@ export default class BookmarkController implements BookmarkControllerI {
             .then(bookmarks => res.json(bookmarks));
 
     userBookmarksTuit = (req: Request, res: Response) =>
-        BookmarkController.bookmarkDao.userBookmarksTuit(req.params.uid, req.params.tid)
+        BookmarkController.bookmarkDao.userBookmarksTuit(req.params.tid, req.params.uid)
             .then(bookmarks => res.json(bookmarks));
 
     userUnbookmarksTuit = (req: Request, res: Response) =>
-        BookmarkController.bookmarkDao.userUnbookmarksTuit(req.params.uid, req.params.tid)
+        BookmarkController.bookmarkDao.userUnbookmarksTuit(req.params.tid, req.params.uid)
             .then(status => res.send(status));
 };

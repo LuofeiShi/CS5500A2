@@ -16,12 +16,12 @@ export default class FollowDao implements FollowDaoI {
         FollowModel.deleteOne({userFollowed: uid1, userFollowing: uid2});
     findAllFollowingUsers = async (uid: string): Promise<Follow[]> =>
         FollowModel
-            .find({user:uid})
-            .populate("userFollowed")
+            .find({userFollowed: uid})
+            .populate("userFollowing")
             .exec();
     findAllFollowers = async (uid: string): Promise<Follow[]> =>
         FollowModel
-            .find({user: uid})
-            .populate("userFollowing")
+            .find({userFollowing: uid})
+            .populate("userFollowed")
             .exec();
 }

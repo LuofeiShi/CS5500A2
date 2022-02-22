@@ -11,8 +11,8 @@ export default class MessageController implements MessageControllerI {
         if (MessageController.messageController === null) {
             MessageController.messageController = new MessageController();
             app.post("/api/users/:uid1/messages/:uid2", MessageController.messageController.sendMessage);
-            app.get("/api/:uid/messages/outs", MessageController.messageController.findAllSentMessage);
-            app.get("/api/:uid/messages/ins", MessageController.messageController.findAllReceivedMessage);
+            app.get("/api/users/:uid/messages/outs", MessageController.messageController.findAllSentMessage);
+            app.get("/api/users/:uid/messages/ins", MessageController.messageController.findAllReceivedMessage);
             app.delete("/api/messages/:mid", MessageController.messageController.deleteMessage);
         }
         return MessageController.messageController;

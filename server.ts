@@ -5,6 +5,9 @@
  *     <li>users</li>
  *     <li>tuits</li>
  *     <li>likes</li>
+ *     <li>follows</li>
+ *     <li>messages</li>
+ *     <li>bookmarks</li>
  * </ul>
  * 
  * Connects to a remote MongoDB instance hosted on the Atlas cloud database
@@ -22,12 +25,13 @@ var cors = require('cors')
 
 // build the connection string
 const PROTOCOL = "mongodb+srv";
-const DB_USERNAME = process.env.DB_USERNAME;
-const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_USERNAME = process.env.DB_USERNAME;    // using server env var
+const DB_PASSWORD = process.env.DB_PASSWORD;    // using server env var
 const HOST = "cluster0.uvwbr.mongodb.net";
 const DB_NAME = "myFirstDatabase";
 const DB_QUERY = "retryWrites=true&w=majority";
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;
+
 // connect to the database
 mongoose.connect(connectionString);
 

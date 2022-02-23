@@ -11,7 +11,6 @@ import User from "../users/User";
  * @property {Tuit} tuit Tuit being liked
  * @property {User} likedBy User liking the tuit
  */
-
 export default interface Like {
     tuit: Tuit,
     likedBy: User

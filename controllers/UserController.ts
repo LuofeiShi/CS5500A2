@@ -37,10 +37,12 @@ export default class UserController implements UserControllerI {
             // for testing without postman. Not RESTful
             app.get("/api/users/create",
                 UserController.userController.createUser);
-            app.get("/api/users/:uid/delete",
+            app.get("/api/users/id/:uid/delete",
                 UserController.userController.deleteUser);
             app.get("/api/users/delete",
                 UserController.userController.deleteAllUsers);
+            app.get("/api/users/username/:username/delete",
+                UserController.userController.deleteUsersByUsername);
             
             // RESTful User Web service API
             app.get("/api/users",
@@ -55,6 +57,8 @@ export default class UserController implements UserControllerI {
                 UserController.userController.deleteUser);
             app.delete("/api/users",
                 UserController.userController.deleteAllUsers);
+            app.post("/api/login",
+                UserController.userController.login);
         }
         return UserController.userController;
     }
@@ -138,4 +142,9 @@ export default class UserController implements UserControllerI {
             .then(user => {
                 
             })
+
+    deleteUsersByUsername = (req: Request, res: Response) =>
+        UserController.userDao.deleteUsersByUsername(req.params.username)
+            .then(status => res.send(status));
+
 };
